@@ -50,7 +50,7 @@ If you change the code (excpet "draw" method in the private sections), you must 
 
 	public:
 
-		void myFunction(int p_SomeUselessParam = 52)
+		void myFunction(int p_SomeUselessParametr = 52)
 		{
 
 			int x = 5;
@@ -69,7 +69,7 @@ If you change the code (excpet "draw" method in the private sections), you must 
 
 	};
 
-	using CAPSLOCK/camelCase(if its not a function) styles is a crime must lead you to very awful aftermaths!!!
+	using CAPSLOCK/camelCase(if its not a function) styles is a crime and must lead you to very awful aftermaths!!!
 
 }
 

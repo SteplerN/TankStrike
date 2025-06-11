@@ -7,14 +7,53 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 Player::Player(float p_SpawnX, float p_SpawnY, sf::Texture& p_FileWithPlayerTexture) : sf::Sprite(p_FileWithPlayerTexture)
 {
-
     setPosition(p_SpawnX, p_SpawnY);
-
 }
 
 bool Player::isIntersectingWithWalls() { return false; }
 
-void Player::moveMainCharacterBasesOnArrows(sf::RenderWindow& p_GivenWindow, float p_Speed, const float p_c_HitboxK)
+void Player::moveCharacterBasesOnInput(const float p_Speed)
+{
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+
+        if (getPosition().x - p_Speed > 0 && !isIntersectingWithWalls())
+        {
+            move(-p_Speed, 0.f);
+            return;
+        }
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+
+        move(p_Speed, 0.f);
+        return;
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+
+        move(0.f, p_Speed);
+        return;
+
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+
+        move(0.f, -p_Speed);
+        return;
+
+    }
+
+}
+
+/*
+void Player::moveCharacterBasesOnInput(sf::RenderWindow& p_GivenWindow, float p_Speed, const float p_c_HitboxK)
 {
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
@@ -60,4 +99,9 @@ void Player::moveMainCharacterBasesOnArrows(sf::RenderWindow& p_GivenWindow, flo
         }
 
     }
+}*/
+
+void Player::doRoutine()
+{
+    moveCharacterBasesOnInput(m_PlayerSpeed);
 }

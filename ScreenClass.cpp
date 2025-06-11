@@ -12,3 +12,8 @@ void ScreenClass::drawTheWorld(World& p_WorldToDraw)
     }
 
 }
+
+void ScreenClass::drawTheUniverse(Universe& p_UniverseToDraw)
+{
+    drawTheWorld(p_UniverseToDraw.getTheWorld());
+}

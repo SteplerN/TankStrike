@@ -127,11 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="README.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="CoreStrategy.cpp" />
+    <ClCompile Include="README.txt" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ScreenClass.cpp" />
+    <ClCompile Include="Universe.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -149,9 +152,12 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.hpp" />
+    <ClInclude Include="CoreStrategy.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="ScreenClass.hpp" />
+    <ClInclude Include="Universe.hpp" />
     <ClInclude Include="Wall.hpp" />
     <ClInclude Include="World.hpp" />
   </ItemGroup>

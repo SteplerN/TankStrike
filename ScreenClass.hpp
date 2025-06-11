@@ -5,6 +5,7 @@
 #include <string>
 
 #include "World.hpp"
+#include "Universe.hpp"
 
 class ScreenClass : public sf::RenderWindow
 {
@@ -15,4 +16,8 @@ public:
 
     void drawTheWorld(World& world_to_draw);
 
+    void drawTheUniverse(Universe& p_UniverseToDraw);
+
 };
+
+ScreenClass g_MainWindow(sf::VideoMode(900, 900), "main_window");
