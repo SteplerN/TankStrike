@@ -1,10 +1,8 @@
 #pragma once
 
-#include "Globals.hpp"
-
 class CoreStrategy
 {
 public:
     virtual ~CoreStrategy();
-    virtual void doTheStrategy();
+    virtual void doTheStrategy() = 0;
 };

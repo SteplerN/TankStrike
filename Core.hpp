@@ -5,18 +5,23 @@
 #include <SFML/Graphics.hpp>
 
 #include "CoreStrategy.hpp"
+#include "PlayingLevel_1Strategy.hpp"
 
 class Core
 {
 
 private:
 
-    std::unique_ptr<CoreStrategy> m_CurrentStrategy;
+    static CoreStrategy& m_CurrentStrategy;
+
+    static bool m_NeedToStop;
 
 public:
 
-    void runTheGame();
+    static void stopTheGame();
 
-    void changeTheStrategy(std::unique_ptr<CoreStrategy> p_GivenStrategy);
+    static void runTheGame();
+
+    static void changeTheStrategy(CoreStrategy& p_GivenStrategy);
 
 };

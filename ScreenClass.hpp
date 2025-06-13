@@ -3,12 +3,15 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
+#include <deque>
 
 #include "World.hpp"
 #include "Universe.hpp"
 
 class ScreenClass : public sf::RenderWindow
 {
+
+    static std::deque <ScreenClass*> m_AllWindows;
 
 public:
 
@@ -17,6 +20,8 @@ public:
     void drawTheWorld(World& world_to_draw);
 
     void drawTheUniverse(Universe& p_UniverseToDraw);
+
+    static void killAllWindows();
 
 };
 

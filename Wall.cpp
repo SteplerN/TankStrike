@@ -6,8 +6,9 @@ void Wall::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(static_cast<sf::Sprite>(*this), states);
 }
 
-Wall::Wall(float p_CoordX, float p_CoordY, sf::Texture& p_GivenSprite) : sf::Sprite(p_GivenSprite)
+Wall::Wall(float p_CoordX, float p_CoordY, sf::Texture& p_GivenTexture)
 {
+    setTexture(p_GivenTexture);
     setPosition(p_CoordX, p_CoordY);
 }
 
@@ -43,3 +44,5 @@ void Wall::parseTextFileToCreateWalls(std::string p_NameOfFile, World& p_TheWorl
         p_TheWorld.addToTheWorld(std::make_unique<Wall>(wall_x * k, wall_y * k, p_GivenTexture));
     }
 }
+
+void Wall::doRoutine() {}

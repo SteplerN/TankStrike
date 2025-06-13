@@ -2,27 +2,17 @@
 
 void Core::runTheGame()
 {
-
-    while (g_MainWindow.isOpen())
-    {
-        sf::Event event;
-
-        while (g_MainWindow.pollEvent(event))
-        {
-
-            if (event.type == sf::Event::Closed)
-            {
-                g_MainWindow.close();
-            }
-
-        }
-
-        m_CurrentStrategy->doTheStrategy();
-    }
-
+    while (!m_NeedToStop) m_CurrentStrategy.doTheStrategy();
+    return;
 }
 
-void Core::changeTheStrategy(std::unique_ptr<CoreStrategy> p_GivenStrategy)
+void Core::changeTheStrategy(CoreStrategy& p_GivenStrategy)
 {
-    m_CurrentStrategy = std::move(p_GivenStrategy);
+    m_CurrentStrategy = p_GivenStrategy;
 }
+
+void Core::stopTheGame() { 
+    m_NeedToStop = true; 
+}
+
+bool Core::m_NeedToStop = false;

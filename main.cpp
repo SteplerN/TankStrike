@@ -1,75 +1,25 @@
-#include <deque>
-#include <memory>
-#include <string>
-#include <fstream>
-
-#include <SFML/Graphics.hpp>
-
-#include "Player.hpp"
-#include "GameObject.hpp"
-#include "Wall.hpp"
-#include "World.hpp"
-#include "ScreenClass.hpp"
-#include "Universe.hpp"
 #include "Core.hpp"
-#include "CoreStrategy.hpp"
-#include "Globals.hpp"
+#include "World.hpp"
+#include "PlayingLevel_1Strategy.hpp"
+#include "FileNames.hpp"
+#include "ScreenClass.hpp"
 
-sf::Texture g_SandWallTetxture;
-sf::Texture g_PlayerTexture;
-
-class PlayingLevel_1Strategy : public CoreStrategy
-{
-
-    void doTheStrategy()
-    {
-
-        for (auto& current_game_object : g_UniverseOfLevel_1.getTheWorld().getTheWorld())
-        {
-            current_game_object->doRoutine();
-        }
-
-        g_MainWindow.drawTheUniverse(g_UniverseOfLevel_1);
-
-    }
-
-};
+ScreenClass& g_ref_MainWindow = g_MainWindow;
 
 int main()
 {
 
-    Level_1.addToTheWorld(std::move(g_Player_1_Ptr));
+    sf::Texture texture_of_blue_tank;
+    texture_of_blue_tank.loadFromFile(g_FileWithSandWallTextureForLevel_1);
 
-    if (!g_SandWallTetxture.loadFromFile("sand_wall_texture.png"))
-    {
-        throw std::runtime_error("Cannot access this asset!\n");
-    }
+    World world_of_level_1;
+    Universe universe_of_level_1(world_of_level_1);
+    Player player_of_level_1(400.f, 400.f, texture_of_blue_tank, universe_of_level_1);
+    PlayingLevel_1Strategy playing_level_1_strategy(universe_of_level_1, player_of_level_1, g_MainWindow);
 
-    if (!g_PlayerTexture.loadFromFile("tank_test_finale.png"))
-    {
-        throw std::runtime_error("Cannot access this asset!\n");
-    }
+    Core::runTheGame();
 
-    Wall::parseTextFileToCreateWalls("wallscoords.txt", Level_1, g_SandWallTetxture);
-
-    while (g_MainWindow.isOpen())
-    {
-        sf::Event event;
-
-        while (g_MainWindow.pollEvent(event))
-        {
-
-            if (event.type == sf::Event::Closed)
-            {
-                g_MainWindow.close();
-            }
-
-        }
-
-        g_MainWindow.clear();
-        g_MainWindow.drawTheWorld(Level_1);
-        g_MainWindow.display();
-    }
+    ScreenClass::killAllWindows();
 
     return 0;
 

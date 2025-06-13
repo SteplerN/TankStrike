@@ -22,5 +22,3 @@ public:
     void addToTheWorld(std::unique_ptr<GameObject> p_WhatToAdd);
 
 };
-
-World Level_1;

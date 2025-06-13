@@ -2,13 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-class GameObject : public sf::Drawable
+class GameObject : public sf::Sprite
 {
 
 public:
 
-    virtual void doRoutine();
-
+    virtual void doRoutine() = 0;
     virtual ~GameObject();
 
 };

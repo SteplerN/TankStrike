@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="CoreStrategy.cpp" />
+    <ClCompile Include="PlayingLevel_1Strategy.cpp" />
     <ClCompile Include="README.txt" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
@@ -154,6 +155,8 @@
   <ItemGroup>
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="CoreStrategy.hpp" />
+    <ClInclude Include="FileNames.hpp" />
+    <ClInclude Include="PlayingLevel_1Strategy.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="ScreenClass.hpp" />
